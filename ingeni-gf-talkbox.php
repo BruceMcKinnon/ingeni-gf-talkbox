@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Gravity Forms to Talkbox Feed Add-On
-Version: 2022.01
+Version: 2022.02
 Plugin URI: http://ingeni.net
 Author: Bruce McKinnon - ingeni.net
 Author URI: http://ingeni.net
@@ -26,21 +26,15 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-
-
-//
-/// . https://github.com/gravityforms/simplefeedaddon
-///
-
-
 //
 // v2022.01 - Initial release
-//
+// v2022.02 - Added a little extra curl debugging
+//			- Added protocol scheme for the default TalkBox URL
 //
 
-define( 'GF_TALKBOX_FEED_ADDON_VERSION', '2022.01' );
+define( 'GF_TALKBOX_FEED_ADDON_VERSION', '2022.02' );
 
-define( 'INGENI_DEFAULT_TALKBOX_FEED_URL', 'talkbox.impactapp.com.au/service/v1');
+define( 'INGENI_DEFAULT_TALKBOX_FEED_URL', 'https://talkbox.impactapp.com.au/service/v1');
 
 
 add_action( 'gform_loaded', array( 'GF_TB_Feed_AddOn_Bootstrap', 'load' ), 5 );

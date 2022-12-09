@@ -4,7 +4,7 @@ Contributors: Bruce McKinnon
 Tags: gravity forms, talkbox
 Requires at least: Gravity Forms 2.6 and a TalkBox account.
 Tested up to: 5.3
-Stable tag: 2022.01
+Stable tag: 2022.02
 
 Send name and email (and optionally a mobile phone) submitted from a Gravity Form to be added to TalkBox Contacts list.
 
@@ -45,3 +45,7 @@ A - Simply add yourself using the Gravity Form. If your email exists in the Talk
 == Changelog ==
 
 v2022.01 - Initial version
+
+v2022.02 - Added a little extra curl debugging
+	- Added protocol scheme for the default TalkBox URL
+

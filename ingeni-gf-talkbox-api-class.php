@@ -126,6 +126,11 @@ class IngeniTbApi {
 			$ch = curl_init();
 			curl_setopt($ch, CURLOPT_URL, $url);
 			curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+			
+			if ($this->debug) {
+			    curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+			}
+			
 
 			curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
 			curl_setopt($ch, CURLOPT_USERPWD, $this->tb_api_username . ":" . $this->tb_api_password);
@@ -142,7 +147,9 @@ class IngeniTbApi {
 			}
 
 
-			$this->fb_log('data '. $put_json);
+            if ($this->debug) {
+			    $this->fb_log('post data '. $put_json);
+            }
 
 			if (substr($url, 0, 5) == "https") {
 				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
@@ -150,7 +157,7 @@ class IngeniTbApi {
 			}
 
 			if ($this->debug) {
-				$this->fb_log('Connecting to '.$url);
+				$this->fb_log('Connecting to: '.$url);
 			}
 			
 			$return_data = curl_exec($ch);
@@ -159,6 +166,11 @@ class IngeniTbApi {
 				$errMsg = curl_error($ch);
 			} else {
 				$return_json = json_decode($return_data, true);
+			}
+			
+			if ($this->debug) {
+			    $headerSent = curl_getinfo($ch, CURLINFO_HEADER_OUT );
+			    $this->fb_log('Headers sent: '.print_r($headerSent,true));
 			}
 
 			// Show me the result
